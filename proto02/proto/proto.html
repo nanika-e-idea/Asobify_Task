@@ -1,0 +1,334 @@
+<!DOCTYPE HTML>
+<html lang="">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Prototype for Asobify Task</title>
+	<link rel="stylesheet" type="text/css" href="../src/assets/css/normalize.css">
+	<script defer src="../src/assets/js/fontawesome-all.min.js"></script>
+
+	<script type="text/javascript">
+	</script>
+	<style>
+		html {
+			font-size: 10px;
+		}
+
+		.main {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			background-color: #999;
+			z-index: 1;
+		}
+
+		.inProcess {
+			box-sizing: border-box;
+			position: relative;
+			width: 100%;
+			height: auto;
+			padding: 2rem;
+			background-color: #222;
+			color: white;
+			overflow: hidden;
+		}
+		.inProcess-check{
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			width: 4rem;
+			text-align: right;
+			font-size: 3rem;
+			color: #444;
+			cursor: pointer;
+		}
+
+		.inProcess-task {
+			position: relative;
+			margin-top: 20px;
+			margin-bottom: 30px;
+			display: flex;
+			justify-content: space-around;
+			flex-wrap: wrap;
+			width: 100%;
+			height: auto;
+			line-height: 8rem;
+			font-size: 2rem;
+		}
+		.inProcess-check:hover{
+			color: aquamarine;
+		}
+
+		.inProcess-task-icon {
+			font-size: 6rem;
+			margin-right: 10px;
+		}
+
+		.inProcess-btns {
+			position: relative;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			list-style-type: none;
+			box-sizing: border-box;
+			height: auto;
+			width: 60%;
+			margin: auto;
+			padding: 0;
+			border-radius: 10px;
+			text-align: center;
+			line-height: 60px;
+			background-color: #ccc;
+		}
+
+		.btn {
+			position: relative;
+			width: 4rem;
+			margin: auto 10px;
+			font-size: 3rem;
+			color: #222;
+			cursor: pointer;
+		}
+
+		.taskList {
+			width: 50%;
+			min-width: 400px;
+			padding-bottom: 20px;
+			background-color: #ddd;
+		}
+
+		.schdList {
+			width: 50%;
+			min-width: 400px;
+			padding-bottom: 20px;
+			background-color: #ccc;
+		}
+
+		.sectionHead {
+			text-align: center;
+			color: #999;
+		}
+
+		.list {
+			box-sizing: border-box;
+			width: calc(100% - 20px);
+			list-style-type: none;
+			padding: 0;
+			margin: auto 10px;
+		}
+
+		.list .striped {
+			background-color: #cdd;
+		}
+
+		.list-line {
+			box-sizing: border-box;
+			padding: 0.5rem;
+		}
+
+		.line-items {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			list-style-type: none;
+			padding: 0;
+			line-height: 1.5rem;
+			font-size: 1rem;
+		}
+
+		.line-items .name {
+			width: 200px;
+		}
+
+		.line-items .progress {
+			width: 160px;
+		}
+
+		.line-items .control {
+			width: 180px;
+		}
+
+		.list-btns {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			list-style-type: none;
+			padding: 0;
+			line-height: 1.5rem;
+			
+		}
+
+		.list-btn {
+			font-size: 1.5rem;
+		}
+
+		.sub {
+			position: fixed;
+			bottom: -200px;
+			width: 100%;
+			text-align: center;
+			z-index: 2;
+		}
+
+		.sub-tab {
+			box-sizing: border-box;
+			height: 50px;
+			width: 200px;
+			margin: auto;
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+			font-size: 30px;
+			line-height: 50px;
+			background-color: #aaa;
+		}
+
+		.sub-body {
+			box-sizing: border-box;
+			height: 200px;
+			background-color: #aaa;
+		}
+
+		.sub_active {
+			bottom: 0;
+		}
+
+		.hidden {
+			visibility: hidden;
+			display: none;
+			z-index: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="main">
+		Asobify Task!
+		<div class="inProcess">
+		    <div class="inProcess-check"><i class="fas fa-check-square"></i></div>
+			<div class="inProcess-task">
+				<div class="inProcess-task-icon"><i class="fas fa-play"></i></div>
+				<div class="inProcess-task-name">Asobify Task プロトタイプ作成</div>
+				<div class="inProcess-task-progress">
+					<span class="progress-count">00:00:00</span> / <span class="">00:00:00</span>
+				</div>
+			</div>
+			<ul class="inProcess-btns">
+				<li class="btn hidden"><i class="fas fa-play"></i></li>
+				<li class="btn"><i class="fas fa-pause"></i></li>
+				<li class="btn"><i class="fas fa-stop"></i></li>
+				<li class="btn"><i class="fas fa-pencil-alt"></i></li>
+				<li class="btn"><i class="fas fa-trash"></i></li>
+			</ul>
+		</div><!-- /inProcess -->
+		<div class="taskList">
+			<h3 class="sectionHead">No-Scheduled Tasks</h3>
+			<ul class="list">
+				<li class="list-line">
+					<ul class="line-items">
+						<li class="name">タスク_1</li>
+						<li class="progress">00:00:00 / 01:00:00</li>
+						<li class="control">
+							<ul class="list-btns">
+								<li class="btn list-btn"><i class="fas fa-play"></i></li>
+								<li class="btn list-btn"><i class="fas fa-pencil-alt"></i></li>
+								<li class="btn list-btn"><i class="fas fa-trash"></i></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="list-line striped">
+					<ul class="line-items">
+						<li class="name">タスク_2</li>
+						<li class="progress">00:20:00 / 01:30:00</li>
+						<li class="control">
+							<ul class="list-btns">
+								<li class="btn list-btn"><i class="fas fa-play"></i></li>
+								<li class="btn list-btn"><i class="fas fa-pencil-alt"></i></li>
+								<li class="btn list-btn"><i class="fas fa-trash"></i></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="list-line">
+					<ul class="line-items">
+						<li class="name">タスク_3</li>
+						<li class="progress">00:00:00 / 01:00:00</li>
+						<li class="control">
+							<ul class="list-btns">
+								<li class="btn list-btn"><i class="fas fa-play"></i></li>
+								<li class="btn list-btn"><i class="fas fa-pencil-alt"></i></li>
+								<li class="btn list-btn"><i class="fas fa-trash"></i></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div><!-- taskList -->
+		<div class="schdList">
+			<h3 class="sectionHead">Scheduled Tasks</h3>
+			<ul class="list">
+				<li class="list-line">
+					<ul class="line-items">
+						<li class="schedule">06 / 03 - 09:30</li>
+						<li class="name">タスク_1</li>
+						<li class="control">
+							<ul class="list-btns">
+								<li class="btn list-btn"><i class="fas fa-play"></i></li>
+								<li class="btn list-btn"><i class="fas fa-pencil-alt"></i></li>
+								<li class="btn list-btn"><i class="fas fa-trash"></i></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="list-line striped">
+					<ul class="line-items">
+						<li class="schedule">06 / 06 - 13:00</li>
+						<li class="name">タスク_2</li>
+						<li class="control">
+							<ul class="list-btns">
+								<li class="btn list-btn"><i class="fas fa-play"></i></li>
+								<li class="btn list-btn"><i class="fas fa-pencil-alt"></i></li>
+								<li class="btn list-btn"><i class="fas fa-trash"></i></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="list-line">
+					<ul class="line-items">
+						<li class="schedule">06 / 10 - 10:00</li>
+						<li class="name">タスク_3</li>
+						<li class="control">
+							<ul class="list-btns">
+								<li class="btn list-btn"><i class="fas fa-play"></i></li>
+								<li class="btn list-btn"><i class="fas fa-pencil-alt"></i></li>
+								<li class="btn list-btn"><i class="fas fa-trash"></i></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="list-line striped">
+					<ul class="line-items">
+						<li class="schedule">06 / 14 - 16:00</li>
+						<li class="name">タスク_4</li>
+						<li class="control">
+							<ul class="list-btns">
+								<li class="btn list-btn"><i class="fas fa-play"></i></li>
+								<li class="btn list-btn"><i class="fas fa-pencil-alt"></i></li>
+								<li class="btn list-btn"><i class="fas fa-trash"></i></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div><!-- schdList -->
+	</div><!-- main -->
+	<div class="sub">
+		<div class="sub-tab"><i class="fas fa-bars"></i></div>
+		<div class="sub-body">sub-body</div>
+	</div>
+</body>
+
+</html>
