@@ -19,17 +19,6 @@ library.add(faSignOutAlt, faCheckSquare, faPlay, faPause, faStop, faPencilAlt, f
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
-var config = {
-            apiKey: "AIzaSyAA_j8KaQtk66cAx3VZJstXH9USEd6ojnI",
-            authDomain: "asobifytask.firebaseapp.com",
-            databaseURL: "https://asobifytask.firebaseio.com",
-            projectId: "asobifytask",
-            storageBucket: "asobifytask.appspot.com",
-            messagingSenderId: "344896295705",
-            appId: "1:344896295705:web:c42f42e96be5a048"
-        };
-        firebase.initializeApp(config);
-
 Vue.use(Vuetify)
 Vue.use(Vuex)
 new Vue({
