@@ -29,12 +29,9 @@
 <style>
     .appheader {
         display: flex;
-        box-sizing: border-box;
-        align-items: center;
-        justify-content: center;
         flex-wrap: wrap;
+        align-items: center;
         justify-content: space-between;
-        box-sizing: border-box;
         border-bottom: solid 1px #222;
         padding: 5px;
         line-height: 2.5rem;
@@ -63,7 +60,7 @@
         align-items: center;
         justify-content: flex-end;
         font-size: 10px;
-        width: 250px;
+        width: auto;
         height: 30px;
         margin-bottom: 0;
         text-align: right;

@@ -4,11 +4,15 @@
             <v-container>
                 <h2>
                     <font-awesome-icon icon="pencil-alt" /> タスクを作成</h2>
-                <v-form>
+                <v-form ref="form" v-model="valid" lazy-validation>
                     <v-layout wrap>
                         <v-flex xs8>
                             <v-text-field v-model="taskname" 
-                                          :counter="25" label="ゴール（タスク名）*" prepend-icon="flag" required ></v-text-field>
+                                          :rules="nameRules"
+                                          :counter="25" 
+                                          label="ゴール（タスク名）*" 
+                                          prepend-icon="flag" 
+                                          required></v-text-field>
                         </v-flex>
                         <v-flex xs4>
                             <v-dialog ref="menu" 
@@ -22,8 +26,7 @@
                                       offset-y 
                                       full-width 
                                       max-width="290px" 
-                                      min-width="290px"
-                                      >
+                                      min-width="290px">
                                 <template v-slot:activator="{ on }">
                                     <v-text-field v-model="time1" 
                                                   label="所要時間" 
@@ -92,7 +95,7 @@
     export default {
         name: "taskedit",
         data: () => ({
-            taskname: null,
+            taskname: '',
             time1: null,
             time2: null,
             date: null,
@@ -109,7 +112,7 @@
         methods: {
             submit: function() {
                 
-            }
+            },
         }
     };
 
