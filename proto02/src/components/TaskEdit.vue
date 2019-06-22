@@ -14,7 +14,7 @@
                                     v-model="menu1" 
                                     :close-on-content-click="false" 
                                     :nudge-right="40" 
-                                    :return-value.sync="time" 
+                                    :return-value.sync="time1" 
                                     lazy 
                                     transition="scale-transition" 
                                     offset-y 
@@ -67,7 +67,7 @@
                                     v-model="menu3" 
                                     :close-on-content-click="false" 
                                     :nudge-right="40" 
-                                    :return-value.sync="time" 
+                                    :return-value.sync="time2" 
                                     lazy 
                                     transition="scale-transition" 
                                     offset-y 
@@ -100,11 +100,13 @@
         name: "taskedit",
         data() {
             return {
-                time: null,
+                taskname: null,
+                time1: null,
+                time2: null,
+                date: null,
                 menu1: false,
                 menu2: false,
-                menu3: false,
-                modal2: false
+                menu3: false
             }
         }
     };

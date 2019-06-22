@@ -1,30 +1,28 @@
 <template>
     <div id="app">
-        <div v-if="!loaded">
-            <img class="logo" src="logo.png">
-            Now Loading...
-        </div>
-        <Auth v-if="!isLogin && loaded"></Auth>
-        <template v-if="isLogin && loaded">
-            <div class="grid">
-                <v-container>
-                    <AppHeader :user="userData"></AppHeader>
-
-                    <v-layout wrap>
-                        <v-flex sm12 md6>
-                            <v-container>
-                                <TaskEdit></TaskEdit>
-                            </v-container>
-                        </v-flex>
-                        <v-flex sm12 md6>
-                            <v-container>
-                                <PlayList></PlayList>
-                            </v-container>
-                        </v-flex>
-                    </v-layout>
-                </v-container>
+        <v-container>
+            <div v-if="!loaded">
+                <img class="logo" src="logo.png">
+                Now Loading...
             </div>
-        </template>
+            <Auth v-if="!isLogin && loaded"></Auth>
+            <template v-if="isLogin && loaded">
+                <AppHeader :user="userData"></AppHeader>
+
+                <v-layout wrap>
+                    <v-flex sm12 md6>
+                        <v-container>
+                            <TaskEdit></TaskEdit>
+                        </v-container>
+                    </v-flex>
+                    <v-flex sm12 md6>
+                        <v-container>
+                            <PlayList></PlayList>
+                        </v-container>
+                    </v-flex>
+                </v-layout>
+            </template>
+        </v-container>
     </div>
 </template>
 
@@ -75,13 +73,20 @@
 </script>
 <style>
     html body {
+        display: block;
+        box-sizing: border-box;
+        width: 100vw;
         font-family: sans-serif;
         text-align: center;
         font-size: 10pt;
         background-color: #f9f9ff;
+        overflow: hidden;
     }
-    #app{
-        //width: calc(100vw - 100px);
+
+    .grid,
+    .layout,
+    .wrap {
+        //overflow: hidden;
     }
 
     .logo {

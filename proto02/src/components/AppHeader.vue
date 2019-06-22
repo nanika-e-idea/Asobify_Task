@@ -6,13 +6,15 @@
         </span>
         <span class="userName">
             {{ user.displayName }}
-        <v-btn small outline icon color="light-green" @click="logout"><font-awesome-icon icon="sign-out-alt" /></v-btn>
+            <v-btn small outline icon color="light-green" @click="logout">
+                <font-awesome-icon icon="sign-out-alt" />
+            </v-btn>
         </span>
     </div>
 </template>
 
 <script>
-   export default {
+    export default {
         name: "appheader",
         props: ["user"],
         methods: {
@@ -25,8 +27,9 @@
 </script>
 
 <style>
-   .appheader {
+    .appheader {
         display: flex;
+        box-sizing: border-box;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
@@ -70,4 +73,5 @@
         margin-left: 0.5rem;
         margin-right: 0.5rem;
     }
+
 </style>
