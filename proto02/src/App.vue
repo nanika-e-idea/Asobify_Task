@@ -2,8 +2,11 @@
     <div id="app">
         <v-container>
             <div v-if="!loaded">
-                <img class="logo" src="logo.png">
                 Now Loading...
+                <div class="asoprogress">
+                    <v-progress-circular :size="100" :width="5" indeterminate color="grey"></v-progress-circular>
+                    <img class="logo" src="logo.png">
+                </div>
             </div>
             <Auth v-if="!isLogin && loaded"></Auth>
             <template v-if="isLogin && loaded">
@@ -80,14 +83,9 @@
         text-align: center;
         font-size: 10pt;
         background-color: #f9f9ff;
-        overflow: hidden;
     }
 
-    .grid,
-    .layout,
-    .wrap {
-        //overflow: hidden;
-    }
+    
 
     .logo {
         display: block;
@@ -95,6 +93,20 @@
         height: auto;
         margin: auto;
     }
+    .asoprogress{
+        position: relative;
+        top: 3rem;
+        width: 100px;
+        height: auto;
+        margin: auto;
+    }
+    .asoprogress .logo{
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        width: 80px;
+    }
+    .asoprogress 
 
     .btnFlat {
         box-sizing: content-box;
